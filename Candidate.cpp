@@ -25,7 +25,8 @@ Candidate::Candidate(string first, string last, double ID, double votes) {
 	LName = last;
 	TotalVotes = votes;
 	BallotList = BallotLinkedList();
-	//^ allows manual input of values for Candidate (although I don't see any code that takes keboard input?)
+	//^ allows manual input of values for Candidate (not manually input through keyboard, instead values are passed when the constructor is called.
+	// see Tabulation.cpp for an example.)
 };
 
 double Candidate::GetCandidateID() {
