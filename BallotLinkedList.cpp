@@ -8,11 +8,7 @@ BallotLinkedList::BallotLinkedList()
 	tail = NULL;
 }
 
-BallotLinkedList::BallotLinkedList(BallotNode &headcopy, BallotNode &tailcopy)
-{
-	*head = headcopy;
-	*tail = tailcopy;
-}
+
 
 BallotLinkedList::~BallotLinkedList()
 {
