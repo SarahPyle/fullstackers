@@ -18,7 +18,7 @@ public:
 		string GetFName(); //retrieves a candidate's first name
 		string GetLName(); //retrieves a candidate's last name
 		bool Equals(Candidate candidate); //checks to make sure the candidate being input has the same ID
-		void Print(); 
+		void Print(); //displays the first name, last name, and ID of a candidate
 		void CheckForDuplicates(BallotLinkedList BallotList); //checks for duplicate ballots
 		void CountVotes(); //counts the total number of votes collected
 		BallotLinkedList GetBallotList(); //retrieves the list of ballots
