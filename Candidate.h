@@ -17,19 +17,19 @@ public:
 		double GetTotalVotes(); //retrieves the total number of votes collected
 		string GetFName(); //retrieves a candidate's first name
 		string GetLName(); //retrieves a candidate's last name
-		bool Equals(Candidate candidate);
-		void Print();
-		void CheckForDuplicates(BallotLinkedList BallotList);
-		void CountVotes();
-		BallotLinkedList GetBallotList();
-		void AddBallot(Ballot ballot);
-		void RemoveBallot(Ballot ballot);
+		bool Equals(Candidate candidate); //checks to make sure the candidate being input has the same ID
+		void Print(); 
+		void CheckForDuplicates(BallotLinkedList BallotList); //checks for duplicate ballots
+		void CountVotes(); //counts the total number of votes collected
+		BallotLinkedList GetBallotList(); //retrieves the list of ballots
+		void AddBallot(Ballot ballot); //adds a ballot to the front of the list of ballots
+		void RemoveBallot(Ballot ballot); //removes a bllot from the front of the list of ballots
 
-		string FName;
-		string LName;
-		double CandidateID;
-		double TotalVotes;
-		BallotLinkedList BallotList;
-		// BallotLinkedList CandBallotList;
+		string FName; //stores the first name of a candidate
+		string LName; //stores the last name of a candidate
+		double CandidateID; //stores the ID of a candidate
+		double TotalVotes; //stores the total number of votes collected
+		BallotLinkedList BallotList; //stores the list of ballots
+		
 
 };
