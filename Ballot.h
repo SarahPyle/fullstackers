@@ -14,7 +14,7 @@ public:
 	Ballot(Ballot &ballot);
 	~Ballot();//Destructor
 
-	bool Equals(Ballot ballot);
+	bool IDsEqual(Ballot ballot);
 	double GetBallotID() { return BallotID; } // Fetches the BallotId
 	double GetDistict() { return DistrictID; } //Fetches and returns DistrictID
 	double GetGovVoteCandidate() { return GovernorVote; } //Fetches and returns CandidateID
