@@ -69,7 +69,7 @@ void CandidateLinkedList::RemoveItem(Candidate& candidate)
 		while (temp != NULL)
 		{
 			
-			if (temp->candidate.Equals(candidate))
+			if (temp->candidate.IDsEqual(candidate))
 			{
 				next = temp->next;
 				prev = temp->prev;

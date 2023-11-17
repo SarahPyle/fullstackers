@@ -64,7 +64,7 @@ void BallotLinkedList::RemoveItem(Ballot& ballot)
 		while (temp != NULL)
 		{
 
-			if (temp->ballot.Equals(ballot))
+			if (temp->ballot.IDsEqual(ballot))
 			{
 				next = temp->next;
 				prev = temp->prev;

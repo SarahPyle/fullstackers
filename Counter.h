@@ -28,11 +28,7 @@ public:
 	CandidateLinkedList GetGovCandidateList();
 	CandidateLinkedList GetPresCandidateList();
 
-	//prints the 3 types of candidates
-	void PrintSenatorCandidate();
-	void PrintGovernorCandidate();
-	void PrintPresidentCandidate();
-	//NullCandidate = new Candidate(null); //also put into linked list
+	
 
 	//method to find the candidate on the ballot
 	void FindBallotCandidate();

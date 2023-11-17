@@ -1,4 +1,4 @@
-#include "Candidate.h";
+#include "Candidate.h"
 using namespace std;
 
 Candidate::Candidate() {
