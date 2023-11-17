@@ -49,7 +49,7 @@ string Candidate::GetLName() {
 	//^ returns the value currently stored in LName
 };
 
-bool Candidate::Equals(Candidate candidate)
+bool Candidate::IDsEqual(Candidate candidate)
 {
 	return (candidate.GetCandidateID() == CandidateID);
 	//^ returns true or false depending on whether the current value in CandidateID is the same
