@@ -32,7 +32,7 @@ Ballot::Ballot(Ballot &ballot)
 	FilledIn = ballot.VerifyFilledIn();
 }
 
-bool Ballot::Equals(Ballot ballot)
+bool Ballot::IDsEqual(Ballot ballot)
 {
 	return (ballot.GetBallotID() == BallotID);
 }
