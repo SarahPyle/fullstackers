@@ -67,10 +67,10 @@ void Candidate::Print() {
 
 void Candidate::CheckForDuplicates(BallotLinkedList BallotList) {
 	//under construction
-	//have an outer for loop that goes through the full list of ballots, and within that
-	//loop perhaps have if statements that compare the current ballot to every other
-	//ballot in the list. likely highly inefficient, a better method will be thought up
-	//later. (also, what should this method do anything if a duplicate is found?)
+	//have an outer for loop that goes through the full list of ballots, stopping
+	//at each one, and in another loop going through the rest of the list comparing
+	//the current ballot in the outer loop with the rest of them.
+	//(also, what should this method do anything if a duplicate is found?)
 };
 
 void Candidate::CountVotes() {
