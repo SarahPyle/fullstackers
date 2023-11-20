@@ -60,6 +60,7 @@ void Candidate::Print() {
 	cout << "Candidate " << CandidateID << ": " << std::endl;
 	cout << "First Name: " << FName << std::endl;
 	cout << "Last Name: " << LName << std::endl;
+	cout << "Total Votes: " << TotalVotes << std::endl;
 	cout << "----------------" << endl;
 	//^ displays the Candidate's ID, first name, and last name in order
 	//perhaps add statements to display other information, like district
