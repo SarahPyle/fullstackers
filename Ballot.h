@@ -16,7 +16,7 @@ public:
 
 	bool IDsEqual(Ballot ballot);
 	double GetBallotID() { return BallotID; } // Fetches the BallotId
-	double GetDistict() { return DistrictID; } //Fetches and returns DistrictID
+	double GetDistrict() { return DistrictID; } //Fetches and returns DistrictID
 	double GetGovVoteCandidate() { return GovernorVote; } //Fetches and returns CandidateID
 	double GetSenVoteCandidate() { return SenatorVote; }//Fetches and returns CandidateID
 	double GetPresVoteCandidate() { return PresidentialVote; }//Fetches and returns CandidateID
