@@ -110,18 +110,25 @@ void Counter::RemoveDuplicates() {
             double tempGovID list.ReturnFrontItem().GetGovVoteCandidate().GetCandidateID();
             double tempPresID list.ReturnFrontItem().GetPresVoteCandidate().GetCandidateID();
             bool identical = true;
-            BallotList.RemoveFront();
+            list.RemoveFront();
             Ballot tempBallot = FindBallot(tempID);
             If(tempBallot.GetBallotID()!=-1){
                 if(tempBallot.GetDistrictID()!=tempDistID){identical=false;}
-                if(tempBallot.GetGovVoteCandidate().GetCandidateID()!=tempDistID){identical=false;}
-                if (tempBallot.GetDistrictID()!=tempDistID){identical=false;}
-                if (tempBallot.GetDistrictID()!=tempDistID){identical=false;}
-                if (tempBallot.GetDistrictID()!=tempDistID){identical=false;}
+                if(tempBallot.GetGovVoteCandidate().GetCandidateID()!=tempGovID){identical=false;}
+                if (tempBallot.GetPresVoteCandidate().GetCandidateID()!=tempPresID){identical=false;}
+                if (tempBallot..GetSenVoteCandidate().GetCandidateID()!=tempSenID){identical=false;}
             }
+            If(identical == false){
+                While (BallotList.FindBallot(tempBallID).GetBallotID()==tempBallID){
+                    BallotLinkedList.RemoveBallot(BallotList.FindBallot(tempBallID));
+                }
+            };
             
 
         }
+
+        
+    }
 }
 
 //PRINT FUNCTIONS
