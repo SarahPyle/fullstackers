@@ -12,7 +12,7 @@ class Candidate {
 public:
 		Candidate(); //default constructor
 		Candidate(Candidate& candidate); //copy constructor
-		Candidate(string first, string last, double ID, double votes); //manual constructor
+		Candidate(string first, string last, double ID); //manual constructor
 		double GetCandidateID(); //retrieves Candidate ID
 		double GetTotalVotes(); //retrieves the total number of votes collected
 		string GetFName(); //retrieves a candidate's first name
