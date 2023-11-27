@@ -20,7 +20,8 @@ public:
 	double GetGovVoteCandidate() { return GovernorVote; } //Fetches and returns CandidateID
 	double GetSenVoteCandidate() { return SenatorVote; }//Fetches and returns CandidateID
 	double GetPresVoteCandidate() { return PresidentialVote; }//Fetches and returns CandidateID
-	bool VerifyFilledIn() { return FilledIn; }// Checks if Ballot is filled in.
+	bool GetFilledIn() { return FilledIn; }// Checks if Ballot is filled in.
+	void VerifyFilledIn() { return FilledIn; }// Checks if Ballot is filled in.
 	void Print();//Prints the Ballot Information
 
 
