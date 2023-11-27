@@ -19,11 +19,11 @@ Candidate::Candidate(Candidate& candidate) {
 	//^ copies the values currently stored in the candidate class
 };
 
-Candidate::Candidate(string first, string last, double ID, double votes) {
+Candidate::Candidate(string first, string last, double ID) {
 	CandidateID = ID;
 	FName = first;
 	LName = last;
-	TotalVotes = votes;
+	TotalVotes = 0;
 	BallotList = BallotLinkedList();
 	//^ allows manual input of values for Candidate (not manually input through keyboard, instead values are passed when the constructor is called.
 	// see Tabulation.cpp for an example.)
