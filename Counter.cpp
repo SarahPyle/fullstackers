@@ -107,22 +107,32 @@ void Counter::RemoveDuplicates() {
             double tempBallID = list.ReturnFrontItem().GetBallotID();
             double tempDistID = list.ReturnFrontItem().GetDistrict();
             double tempSenID = list.ReturnFrontItem().GetSenVoteCandidate().GetCandidateID();
-            double tempGovID list.ReturnFrontItem().GetGovVoteCandidate().GetCandidateID();
-            double tempPresID list.ReturnFrontItem().GetPresVoteCandidate().GetCandidateID();
+            double tempGovID = list.ReturnFrontItem().GetGovVoteCandidate().GetCandidateID();
+            double tempPresID = list.ReturnFrontItem().GetPresVoteCandidate().GetCandidateID();
+            double tempFilledIn = list.GetFilledIn()
             bool identical = true;
+            bool duplicates = false
             list.RemoveFront();
             Ballot tempBallot = FindBallot(tempID);
             If(tempBallot.GetBallotID()!=-1){
+                duplicates = true;
                 if(tempBallot.GetDistrictID()!=tempDistID){identical=false;}
                 if(tempBallot.GetGovVoteCandidate().GetCandidateID()!=tempGovID){identical=false;}
                 if (tempBallot.GetPresVoteCandidate().GetCandidateID()!=tempPresID){identical=false;}
-                if (tempBallot..GetSenVoteCandidate().GetCandidateID()!=tempSenID){identical=false;}
+                if (tempBallot.GetSenVoteCandidate().GetCandidateID()!=tempSenID){identical=false;}
             }
             If(identical == false){
                 While (BallotList.FindBallot(tempBallID).GetBallotID()==tempBallID){
                     BallotLinkedList.RemoveBallot(BallotList.FindBallot(tempBallID));
                 }
-            };
+            }
+            If(duplicates && identical){
+                While (BallotList.FindBallot(tempBallID).GetBallotID()==tempBallID){
+                        BallotLinkedList.RemoveBallot(BallotList.FindBallot(tempBallID));
+                }
+                Ballot replace = *(new Ballot(tempBallID,tempDistID,temGovID,tempSenID,tempPresID,tempFilledIn))
+                BallotList.AddItemToBack(replace);
+            }
             
 
         }
