@@ -97,6 +97,33 @@ void Counter::AssignBallotToCandidate(double CandidateID, Ballot& ballot, string
             
 }
 
+
+void Counter::RemoveDuplicates() {
+
+        BallotLinkedList list = BallotList.Copy();
+        while (!list.Empty()) 
+        {
+
+            double tempBallID = list.ReturnFrontItem().GetBallotID();
+            double tempDistID = list.ReturnFrontItem().GetDistrict();
+            double tempSenID = list.ReturnFrontItem().GetSenVoteCandidate().GetCandidateID();
+            double tempGovID list.ReturnFrontItem().GetGovVoteCandidate().GetCandidateID();
+            double tempPresID list.ReturnFrontItem().GetPresVoteCandidate().GetCandidateID();
+            bool identical = true;
+            BallotList.RemoveFront();
+            Ballot tempBallot = FindBallot(tempID);
+            If(tempBallot.GetBallotID()!=-1){
+                if(tempBallot.GetDistrictID()!=tempDistID){identical=false;}
+                if(tempBallot.GetGovVoteCandidate().GetCandidateID()!=tempDistID){identical=false;}
+                if (tempBallot.GetDistrictID()!=tempDistID){identical=false;}
+                if (tempBallot.GetDistrictID()!=tempDistID){identical=false;}
+                if (tempBallot.GetDistrictID()!=tempDistID){identical=false;}
+            }
+            
+
+        }
+}
+
 //PRINT FUNCTIONS
 
 //president print function
