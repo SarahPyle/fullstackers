@@ -48,6 +48,29 @@ void BallotLinkedList::AddItemToFront(Ballot& ballot)
 	head = temp;
 }
 
+
+void BallotLinkedList::AddItemToBack(Ballot& ballot)
+{
+	BallotNode* temp = new BallotNode;
+
+
+	temp->ballot = ballot;   //object added to linked list
+
+	temp->next = NULL; //end of list is now NULL
+	temp->prev = tail; //current tail is now prev of our new node
+
+	if (tail == NULL)
+	{
+		head = temp;
+	}
+	else
+	{
+		tail->next = temp;
+	}
+
+	tail = temp;
+}
+
 Ballot& BallotLinkedList::ReturnFrontItem()
 {
 	return head->ballot;

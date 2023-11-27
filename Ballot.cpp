@@ -25,11 +25,11 @@ Ballot::Ballot(double BallotID1, double DistrictID1, double GovernorVote1, doubl
 Ballot::Ballot(Ballot &ballot)
 {
 	BallotID = ballot.GetBallotID();
-	DistrictID = ballot.GetDistict();
+	DistrictID = ballot.GetDistrictID();
 	GovernorVote = ballot.GetGovVoteCandidate();
 	SenatorVote = ballot.GetSenVoteCandidate();
 	PresidentialVote = ballot.GetPresVoteCandidate();
-	FilledIn = ballot.VerifyFilledIn();
+	FilledIn = ballot.GetFilledIn();
 }
 
 bool Ballot::IDsEqual(Ballot ballot)
@@ -38,11 +38,11 @@ bool Ballot::IDsEqual(Ballot ballot)
 }
 
 void Ballot::VerifyFilledIn() {
-	if(BallotID == -1){FilledIn = false}
-	if(DistrictID == -1){FilledIn = false}
-	if(SenatorVote == -1){FilledIn = false}
-	if(GovernorVote == -1){FilledIn = false}
-	if(Presidential == -1){FilledIn = false}
+	if (BallotID == -1) { FilledIn = false; }
+	if (DistrictID == -1) { FilledIn = false; }
+	if (SenatorVote == -1) { FilledIn = false; }
+	if (GovernorVote == -1) { FilledIn = false; }
+	if (PresidentialVote == -1) { FilledIn = false; }
 }
 
 void Ballot::Print() {
