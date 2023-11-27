@@ -4,39 +4,75 @@
 #include <string>
 #include <vector>
 #include <sstream>
-#include <cstdlib>
+#include <stdlib.h>
 
 using namespace std;
 
 
-FileReader::FileReader() {}
+FileReader::FileReader() { counter = Counter(); }
 FileReader::~FileReader() {}
 
-void FileReader::ReadCandFile(string fileName){
-    ifstream fin; //create the stream object
+void FileReader::ReadCandFile(string fileName, string type){
+    ifstream fin(fileName, ios::in); //create the stream object
+    
+   
 
-    fin.open(fileName);///currently only testing Senators
-    string str;
-    vector<string> strVec(20);
+    vector<string> row;
+    string line, word, temp;
+
+
+
+    Candidate newCandidate;
+
     if (fin.is_open())
     {
-        //while (fin.good())//or for
-        //{
-            for (int i = 0; i < strVec.size() - 1; i++) {
-                getline(fin, strVec[i], ',');
+        while (fin.good())
+        {
+            //gets the next row in the csv
+            getline(fin, line, '\n');
+
+            //turns the line into a stream so that getline can be used on 'line'
+            stringstream s(line);
+           
+            
+            if (line != "")
+            {
+                while (getline(s, word, ',') )
+                {
+
+                    
+                    row.push_back(word);
+                    
+
+                }
+                
+                //for some reason it gave access violations when writing explicitly so this is how im doing it
+                //new candidate is made with the 2nd column being the first name, 3nd last name, and 1st candidate id
+                newCandidate = *(new Candidate(row[1], row[2], stod(row[0])));
+
+                if (type == "Sen")
+                {
+                    //adds the new candidate to the senator linked list
+                    //needs to be made where it can choose which list to add to
+                    counter.SenLinkedList.AddItemToFront(newCandidate);
+                }
+                else if (type == "Gov")
+                {
+                    counter.GovLinkedList.AddItemToFront(newCandidate);
+                }
+                else if (type == "Pres")
+                {
+                    counter.PresLinkedList.AddItemToFront(newCandidate);
+                }
+                row.clear();
+                
             }
-            for (int i = 0; i < strVec.size()-1; i++) {
-                if (strVec[i] != "") {
-                    cout << strVec[i] << "\n";
-                }             //instead of printing, this will make candidate objects later.
-            }
-            strVec.clear();
-        //}
+        }
         fin.close();
 
     }
 
-    else { cout << "Unable to open file.\n"; }
+    else { std::cout << "Unable to open file.\n"; }
 }
 
 
@@ -52,5 +88,5 @@ void FileReader::ReadBallotFile(string fileName) {
 
     }
 
-    else { cout << "Unable to open file.\n"; }
+    else { std::cout << "Unable to open file.\n"; }
 }
