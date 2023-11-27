@@ -4,7 +4,7 @@
 using namespace std;
 
 Ballot::Ballot() {
-	FilledIn = false;
+	FilledIn = true;
 	BallotID = -1;
 	DistrictID = -1;
 	GovernorVote = -1;
@@ -37,7 +37,13 @@ bool Ballot::IDsEqual(Ballot ballot)
 	return (ballot.GetBallotID() == BallotID);
 }
 
-
+void Ballot::VerifyFilledIn() {
+	if(BallotID == -1){FilledIn = false}
+	if(DistrictID == -1){FilledIn = false}
+	if(SenatorVote == -1){FilledIn = false}
+	if(GovernorVote == -1){FilledIn = false}
+	if(Presidential == -1){FilledIn = false}
+}
 
 void Ballot::Print() {
 	cout << "-----------------" << endl;
