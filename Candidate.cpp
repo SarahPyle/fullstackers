@@ -101,7 +101,7 @@ void Candidate::CountVotes() {
 
 void Candidate::AddBallot(Ballot &ballot) 
 {
-	ballot.Print();
+	//ballot.Print();
 	BallotList.AddItemToFront(ballot);
 	//^ adds a new ballot to the front of the list, using the values stored in the ballot parameter passed to the method
 };

@@ -4,7 +4,7 @@
 using namespace std;
 
 Ballot::Ballot() {
-	FilledIn = true;
+	FilledIn = false;
 	BallotID = -1;
 	DistrictID = -1;
 	GovernorVote = -1;

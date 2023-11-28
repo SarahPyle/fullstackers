@@ -61,11 +61,19 @@ void Counter::FindBallotCandidate() {
         {
 
             Ballot ballot = BallotList.ReturnFrontItem();
+            Candidate cand = GovLinkedList.FindCandidate(ballot.GetGovVoteCandidate());
+            cand.BallotList.AddItemToFront(ballot);
             
 
-            AssignBallotToCandidate(ballot.GetGovVoteCandidate(), ballot, "Gov");
+            cand = SenLinkedList.FindCandidate(ballot.GetSenVoteCandidate());
+            cand.BallotList.AddItemToFront(ballot);
+            
+            cand = PresLinkedList.FindCandidate(ballot.GetPresVoteCandidate());
+            cand.BallotList.AddItemToFront(ballot);
+
+            /*AssignBallotToCandidate(ballot.GetGovVoteCandidate(), ballot, "Gov");
             AssignBallotToCandidate(ballot.GetSenVoteCandidate(), ballot, "Sen");
-            AssignBallotToCandidate(ballot.GetPresVoteCandidate(), ballot, "Pres");
+            AssignBallotToCandidate(ballot.GetPresVoteCandidate(), ballot, "Pres");*/
 
             list.RemoveFront();
 
@@ -81,7 +89,7 @@ void Counter::AssignBallotToCandidate(double CandidateID, Ballot& ballot, string
     if (CandidateType == "Gov") {
 
         candidate = GovLinkedList.FindCandidate(CandidateID);
-        candidate.Print();
+        //candidate.Print();
 
         }
     else if (CandidateType == "Sen") {
@@ -95,8 +103,8 @@ void Counter::AssignBallotToCandidate(double CandidateID, Ballot& ballot, string
         candidate = PresLinkedList.FindCandidate(CandidateID);
 
     }
-
-    candidate.AddBallot(ballot); //This might need to be ballot* or ballot&
+    candidate.Print();
+    candidate.BallotList.AddItemToFront(ballot); //This might need to be ballot* or ballot&
             
 }
 
