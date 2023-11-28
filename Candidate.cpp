@@ -61,6 +61,26 @@ void Candidate::Print() {
 	cout << "First Name: " << FName << std::endl;
 	cout << "Last Name: " << LName << std::endl;
 	cout << "Total Votes: " << TotalVotes << std::endl;
+	cout << "This Candidate is a part of these districts: ";
+	if (DistrictIDs.size() != 0)
+	{
+		for (int i = 0; i < DistrictIDs.size(); i++)
+		{
+			cout << DistrictIDs[i] << ", ";
+		}
+	}
+	cout << endl;
+	cout << "This candidate holds these ballots: " << endl;
+	BallotLinkedList list = BallotList.Copy();
+
+	while (!list.Empty()) {
+
+		list.ReturnFrontItem().Print();
+
+		list.RemoveFront();
+
+	}
+
 	cout << "----------------" << endl;
 	//^ displays the Candidate's ID, first name, and last name in order
 	//perhaps add statements to display other information, like district
@@ -79,12 +99,14 @@ void Candidate::CountVotes() {
 	
 };
 
-void Candidate::AddBallot(Ballot ballot) {
+void Candidate::AddBallot(Ballot &ballot) 
+{
+	ballot.Print();
 	BallotList.AddItemToFront(ballot);
 	//^ adds a new ballot to the front of the list, using the values stored in the ballot parameter passed to the method
 };
 
-void Candidate::RemoveBallot(Ballot ballot) {
+void Candidate::RemoveBallot(Ballot &ballot) {
 	BallotList.RemoveItem(ballot);
 	//^ removes the ballot stored in the list if its values correlate to the values passed in the ballot parameter
 	//may want to include an exception/catch algorithm that will display an error when the ballot passed does not exist in the list

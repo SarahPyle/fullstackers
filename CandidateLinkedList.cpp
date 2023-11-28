@@ -113,6 +113,7 @@ Candidate& CandidateLinkedList::FindCandidate(double candidateID)
 
 				return temp->candidate;
 			}
+			temp = temp->next;
 		}
 	}
 	return *(new Candidate());

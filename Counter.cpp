@@ -61,6 +61,7 @@ void Counter::FindBallotCandidate() {
         {
 
             Ballot ballot = BallotList.ReturnFrontItem();
+            
 
             AssignBallotToCandidate(ballot.GetGovVoteCandidate(), ballot, "Gov");
             AssignBallotToCandidate(ballot.GetSenVoteCandidate(), ballot, "Sen");
@@ -69,27 +70,29 @@ void Counter::FindBallotCandidate() {
             list.RemoveFront();
 
         }
+
 }
 
 //assigning the ballots to the candidate // checks what the candidate type matches, if (ID) match Gov, assign ballot to Gov, etc
 void Counter::AssignBallotToCandidate(double CandidateID, Ballot& ballot, string CandidateType) {
 
-    Candidate candidate = *(new Candidate());
-
+    Candidate candidate;
+    cout << "Assigning Ballot to Candidate" << endl;
     if (CandidateType == "Gov") {
 
-        Candidate candidate = GovLinkedList.FindCandidate(CandidateID);
+        candidate = GovLinkedList.FindCandidate(CandidateID);
+        candidate.Print();
 
         }
     else if (CandidateType == "Sen") {
 
-        Candidate candidate = SenLinkedList.FindCandidate(CandidateID);
+        candidate = SenLinkedList.FindCandidate(CandidateID);
 
     }
 
     else if (CandidateType == "Pres") {
 
-        Candidate candidate = PresLinkedList.FindCandidate(CandidateID);
+        candidate = PresLinkedList.FindCandidate(CandidateID);
 
     }
 
@@ -147,6 +150,49 @@ void Counter::RemoveDuplicates()
     
 }
 
+
+void Counter::CountAllVotes()
+{
+    CandidateLinkedList list = SenLinkedList.Copy();
+
+    while (!list.Empty()) 
+    {
+
+        list.ReturnFrontItem().CountVotes();
+
+
+        list.RemoveFront();
+
+    }
+    list  = GovLinkedList.Copy();
+
+    while (!list.Empty()) 
+    {
+
+        list.ReturnFrontItem().CountVotes();
+
+
+        list.RemoveFront();
+
+    }
+    list = PresLinkedList.Copy();
+
+    while (!list.Empty()) 
+    {
+
+        list.ReturnFrontItem().CountVotes();
+
+
+        list.RemoveFront();
+
+    }
+
+
+
+
+}
+
+
 //PRINT FUNCTIONS
 
 //president print function
@@ -162,10 +208,6 @@ void Counter::PresidentPrint() {
 
         list.ReturnFrontItem().Print();
 
-        //cout << "Candidate Name: " << candidate.GetCandidateName() << endl; //Needs to be split into FName and LName
-        //cout << "Candidate ID: " << candidate.GetCandidateID() << endl;
-        //cout << "Candidate Counted Votes: " << candidate.GetVotes() << endl;
-        ////cout << "Candidate Total Votes: " << candidate.GetTotalCandidateVotes() << endl;
 
         list.RemoveFront();
 

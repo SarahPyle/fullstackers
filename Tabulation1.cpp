@@ -34,11 +34,13 @@ int main()
 	fileReader.ReadBallotFile("Ballots.csv");
 	//fileReader.counter.BallotListPrint();
 	fileReader.counter.RemoveDuplicates();
-	//fileReader.counter.BallotListPrint();
+	fileReader.counter.BallotListPrint();
 	fileReader.counter.FindBallotCandidate();
 
-	fileReader.counter.SenatorPrint();
+	//fileReader.counter.CountAllVotes();
+
+	/*fileReader.counter.SenatorPrint();
 	fileReader.counter.GovernorPrint();
-	fileReader.counter.PresidentPrint();
+	fileReader.counter.PresidentPrint();*/
 }
 
