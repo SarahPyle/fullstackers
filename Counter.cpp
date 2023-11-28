@@ -9,10 +9,10 @@ using namespace std;
 
 //default constructor
 Counter::Counter() {
-    CandidateLinkedList SenLinkedList = *(new CandidateLinkedList());
-    CandidateLinkedList GovLinkedList = *(new CandidateLinkedList());
-    CandidateLinkedList PresLinkedList = *(new CandidateLinkedList());
-    BallotLinkedList BallotList = *(new BallotLinkedList());
+    SenLinkedList = *(new CandidateLinkedList());
+    GovLinkedList = *(new CandidateLinkedList());
+    PresLinkedList = *(new CandidateLinkedList());
+    BallotList = *(new BallotLinkedList());
     //ask Sky when she makes the reader classes
     /*Sky here, this will instantiate a FileReader and that file reader will make Candidate
     and Ballot objects and assign them to the counter's appropriate linkedList.*/
