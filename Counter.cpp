@@ -204,3 +204,18 @@ void Counter::GovernorPrint() {
 
     }
 }
+
+
+void Counter::BallotListPrint()
+{
+    cout << "Printing All Ballot Information: " << endl;
+    BallotLinkedList list = BallotList.Copy();
+
+    while (!list.Empty()) {
+
+        list.ReturnFrontItem().Print();
+
+        list.RemoveFront();
+
+    }
+}

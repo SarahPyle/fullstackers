@@ -30,7 +30,7 @@ void FileReader::ReadCandFile(string fileName, string type){
         {
             //gets the next row in the csv
             getline(fin, line, '\n');
-
+            
             //turns the line into a stream so that getline can be used on 'line'
             stringstream s(line);
            
@@ -58,6 +58,7 @@ void FileReader::ReadCandFile(string fileName, string type){
                 }
                 else if (type == "Gov")
                 {
+                    
                     counter.GovLinkedList.AddItemToFront(newCandidate);
                 }
                 else if (type == "Pres")
@@ -77,15 +78,51 @@ void FileReader::ReadCandFile(string fileName, string type){
 
 
 void FileReader::ReadBallotFile(string fileName) {
-    ifstream fin; //create the stream object
+    ifstream fin(fileName, ios::in); //create the stream object
 
-    fin.open(fileName);
-    string str;
-    vector<string> strVec(20);
+    //fin.open(fileName);
+    
+
+
+    vector<string> row;
+    string line, word, temp;
+
+
+
+    Ballot newBallot;
     if (fin.is_open())
     {
-        //implementation of create aballot objects from data
+        while (fin.good())
+        {
+            //gets the next row in the csv
+            getline(fin, line, '\n');
 
+            //turns the line into a stream so that getline can be used on 'line'
+            stringstream s(line);
+
+
+            if (line != "")
+            {
+                while (getline(s, word, ','))
+                {
+
+
+                    row.push_back(word);
+
+
+                }
+
+                //for some reason it gave access violations when writing explicitly so this is how im doing it
+                //new candidate is made with the 2nd column being the first name, 3nd last name, and 1st candidate id
+                newBallot = *(new Ballot(stod(row[0]), stod(row[1]), stod(row[2]), stod(row[3]), stod(row[4]), false));
+
+                counter.BallotList.AddItemToFront(newBallot);
+                row.clear();
+
+            }
+
+        }
+        fin.close();
     }
 
     else { std::cout << "Unable to open file.\n"; }

@@ -41,6 +41,7 @@ public:
 	void PresidentPrint();
 	void SenatorPrint();
 	void GovernorPrint();
+	void BallotListPrint();
 
 };
 
