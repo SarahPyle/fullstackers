@@ -12,7 +12,7 @@ Counter::Counter() {
     CandidateLinkedList SenLinkedList = *(new CandidateLinkedList());
     CandidateLinkedList GovLinkedList = *(new CandidateLinkedList());
     CandidateLinkedList PresLinkedList = *(new CandidateLinkedList());
-    CandidateLinkedList BallotList = *(new CandidateLinkedList());
+    BallotLinkedList BallotList = *(new BallotLinkedList());
     //ask Sky when she makes the reader classes
     /*Sky here, this will instantiate a FileReader and that file reader will make Candidate
     and Ballot objects and assign them to the counter's appropriate linkedList.*/
