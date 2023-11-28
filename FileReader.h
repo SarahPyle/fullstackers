@@ -17,5 +17,6 @@ public:
 	~FileReader();
 	void ReadCandFile(string fileName, string type);
 	void ReadBallotFile(string FileName);
+	bool isDouble(const string& str);
 };
 #endif

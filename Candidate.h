@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include<string>
+#include <vector>
 #include "BallotLinkedList.h"
 
 using namespace std;
@@ -31,6 +32,6 @@ public:
 		double CandidateID; //stores the ID of a candidate
 		double TotalVotes; //stores the total number of votes collected
 		BallotLinkedList BallotList; //stores the list of ballots
-		double DistrictIDArray[100]; //This will hold the District ID's that candidates are a part of
+		vector<double> DistrictIDs; //This will hold the District ID's that candidates are a part of
 
 };

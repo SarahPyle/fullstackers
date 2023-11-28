@@ -66,7 +66,7 @@ void Counter::FindBallotCandidate() {
             AssignBallotToCandidate(ballot.GetSenVoteCandidate(), ballot, "Sen");
             AssignBallotToCandidate(ballot.GetPresVoteCandidate(), ballot, "Pres");
 
-            BallotList.RemoveFront();
+            list.RemoveFront();
 
         }
 }
@@ -115,10 +115,10 @@ void Counter::RemoveDuplicates()
             bool duplicates = false;
             list.RemoveFront();
             Ballot tempBallot = list.FindBallot(tempBallID);
-            if(tempBallot.GetBallotID()!=-1)
+            if(tempBallot.GetBallotID()!=-1 && tempBallot.GetDistrictID() == tempDistID)
             {
                 duplicates = true;
-                if(tempBallot.GetDistrictID()!=tempDistID) {identical=false;}
+                //if(tempBallot.GetDistrictID()!=tempDistID) {identical=false;}
                 if(tempBallot.GetGovVoteCandidate()!=tempGovID) {identical=false;}
                 if (tempBallot.GetPresVoteCandidate()!=tempPresID) {identical=false;}
                 if (tempBallot.GetSenVoteCandidate()!=tempSenID) {identical=false;}

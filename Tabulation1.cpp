@@ -25,17 +25,20 @@ int main()
 	FileReader fileReader = FileReader();
 
 	fileReader.ReadCandFile("SenCand.csv", "Sen");
-	/*fileReader.counter.SenatorPrint();*/
+	
 	fileReader.ReadCandFile("GovCand.csv", "Gov");
 	fileReader.ReadCandFile("PresCand.csv", "Pres");
 	
-	/*fileReader.counter.GovernorPrint();
-	fileReader.counter.PresidentPrint();*/
+	
 
 	fileReader.ReadBallotFile("Ballots.csv");
-	
+	//fileReader.counter.BallotListPrint();
 	fileReader.counter.RemoveDuplicates();
-	fileReader.counter.BallotListPrint();
+	//fileReader.counter.BallotListPrint();
+	fileReader.counter.FindBallotCandidate();
 
+	fileReader.counter.SenatorPrint();
+	fileReader.counter.GovernorPrint();
+	fileReader.counter.PresidentPrint();
 }
 

@@ -50,6 +50,14 @@ void FileReader::ReadCandFile(string fileName, string type){
                 //new candidate is made with the 2nd column being the first name, 3nd last name, and 1st candidate id
                 newCandidate = *(new Candidate(row[1], row[2], stod(row[0])));
 
+                for (int i = 3; i < row.size(); i++)
+                {
+                    if (isDouble(row[i]))
+                    {
+                        newCandidate.DistrictIDs.push_back(stod(row[i]));
+                    }
+                }
+
                 if (type == "Sen")
                 {
                     //adds the new candidate to the senator linked list
@@ -65,6 +73,9 @@ void FileReader::ReadCandFile(string fileName, string type){
                 {
                     counter.PresLinkedList.AddItemToFront(newCandidate);
                 }
+
+
+
                 row.clear();
                 
             }
@@ -75,6 +86,8 @@ void FileReader::ReadCandFile(string fileName, string type){
 
     else { std::cout << "Unable to open file.\n"; }
 }
+
+
 
 
 void FileReader::ReadBallotFile(string fileName) {
@@ -114,8 +127,8 @@ void FileReader::ReadBallotFile(string fileName) {
 
                 //for some reason it gave access violations when writing explicitly so this is how im doing it
                 //new candidate is made with the 2nd column being the first name, 3nd last name, and 1st candidate id
-                newBallot = *(new Ballot(stod(row[0]), stod(row[1]), stod(row[2]), stod(row[3]), stod(row[4]), false));
-
+                newBallot = *(new Ballot(stod(row[0]), stod(row[1]), stod(row[2]), stod(row[3]), stod(row[4]), true));
+                newBallot.VerifyFilledIn();
                 counter.BallotList.AddItemToFront(newBallot);
                 row.clear();
 
@@ -126,4 +139,25 @@ void FileReader::ReadBallotFile(string fileName) {
     }
 
     else { std::cout << "Unable to open file.\n"; }
+}
+
+bool FileReader::isDouble(const string& str)
+{
+    bool result = true;
+    try
+    {
+        // Convert string to double
+        double d = stod(str);
+    }
+    catch (const invalid_argument& e)
+    {
+        // handle the exceptiop invalid_argument
+        result = false;
+    }
+    catch (const out_of_range& e)
+    {
+        // handle the exceptiop out_of_range
+        result = false;
+    }
+    return result;
 }

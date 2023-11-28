@@ -66,13 +66,7 @@ void Candidate::Print() {
 	//perhaps add statements to display other information, like district
 };
 
-void Candidate::CheckForDuplicates(BallotLinkedList BallotList) {
-	//under construction
-	//have an outer for loop that goes through the full list of ballots, stopping
-	//at each one, and in another loop going through the rest of the list comparing
-	//the current ballot in the outer loop with the rest of them.
-	//(also, what should this method do anything if a duplicate is found?)
-};
+
 
 void Candidate::CountVotes() {
 	double i = 0; //creates a local variable to keep track of the total votes counted in this method
