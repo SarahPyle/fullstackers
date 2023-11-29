@@ -67,27 +67,12 @@ void Candidate::Print() {
 	cout << "First Name: " << FName << std::endl;
 	cout << "Last Name: " << LName << std::endl;
 	cout << "Total Votes: " << TotalVotes << std::endl;
-	cout << "This Candidate is a part of these districts: ";
-	/*if (DistrictIDs.size() != 0)
-	{
-		for (int i = 0; i < DistrictIDs.size(); i++)
-		{
-			cout << DistrictIDs[i] << ", ";
-		}
-	}*/
-	cout << endl;
-	cout << "This candidate holds these ballots: " << endl;
-	BallotLinkedList list = BallotList.Copy();
-
-	while (!list.Empty()) {
-
-		list.ReturnFrontItem().Print();
-
-		list.RemoveFront();
-
-	}
+	//cout << "This Candidate is a part of these districts: ";
+	
+	//cout << "This candidate holds these ballots: " << endl;
 
 	cout << "----------------" << endl;
+
 	//^ displays the Candidate's ID, first name, and last name in order
 	//perhaps add statements to display other information, like district
 };

@@ -33,9 +33,9 @@ void BallotLinkedList::RemoveFront()
 void BallotLinkedList::AddItemToFront(Ballot& ballot)
 {
 	BallotNode* temp = new BallotNode;
-	temp->ballot = ballot;
+	temp->ballot = *new Ballot((&ballot)->BallotID,(&ballot)->DistrictID,(&ballot)->GovernorVote,(&ballot)->SenatorVote,(&ballot)->PresidentialVote,(&ballot)->FilledIn);
 	temp->next = head;
-	temp->prev = NULL;
+	temp->prev = NULL;        
 
 	if (head == NULL)
 	{
@@ -147,7 +147,7 @@ BallotLinkedList BallotLinkedList::Copy()
 	BallotNode* temp = head;
 	while (temp != NULL)
 	{
-		list.AddItemToFront(temp->ballot);
+		list.AddItemToFront( temp->ballot);
 		temp = temp->next;
 	}
 	return list;

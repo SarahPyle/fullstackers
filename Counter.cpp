@@ -112,9 +112,10 @@ CandidateLinkedList& Counter::GetPresCandidateList() {
 
 void Counter::RemoveDuplicates() 
 {
+
     BallotLinkedList temp = *(new BallotLinkedList);
     BallotLinkedList list1 = BallotList.Copy();
-    while (!list1.Empty()) 
+    while (!list1.Empty())
     {
 
         double tempBallID = list1.ReturnFrontItem().GetBallotID();
@@ -129,27 +130,27 @@ void Counter::RemoveDuplicates()
 
         list1.RemoveFront();
         BallotLinkedList list2 = list1.Copy();
-        if (list2.ReturnFrontItem().BallotID == tempBallID&& list2.ReturnFrontItem().DistrictID == tempDistID) {
-            duplicates++;
-            if(list2.ReturnFrontItem().SenatorVote == tempSenID && list2.ReturnFrontItem().GovernorVote == tempGovID
-                && list2.ReturnFrontItem().PresidentialVote == tempPresID) {
-                identical++;
-            
+        /*while (!list2.Empty())
+        {*/
+            if (!list2.Empty()&&list2.ReturnFrontItem().BallotID == tempBallID && list2.ReturnFrontItem().DistrictID == tempDistID) {
+                duplicates++;
+                if (list2.ReturnFrontItem().SenatorVote == tempSenID && list2.ReturnFrontItem().GovernorVote == tempGovID
+                    && list2.ReturnFrontItem().PresidentialVote == tempPresID) {
+                    identical++;
+
+                }
+
             }
-                             
-        }
-        if (identical == duplicates) {
-            temp.AddItemToFront(*(new Ballot(tempBallID, tempDistID, tempGovID, tempSenID, tempPresID, tempFilledIn)));
-        }
-        while (list1.FindBallot(tempBallID).BallotID!=-1) {
-            list1.RemoveItem(list1.FindBallot(tempBallID));
-        }
-            
-
+            if (identical == duplicates) {
+                temp.AddItemToFront(*new Ballot(tempBallID, tempDistID, tempGovID, tempSenID, tempPresID, tempFilledIn));
+            }
+            if (list1.FindBallot(tempBallID).BallotID != -1)
+            {
+                list1.RemoveItem(list1.FindBallot(tempBallID));
+            }
+        //}
     }
-
-        
-    
+    BallotList = temp;
 }
 
 
@@ -163,12 +164,18 @@ void Counter::CountAllVotes()
     BallotLinkedList list = BallotList.Copy();
     Ballot ballot;
 
+
     while (!list.Empty()) {
 
+        
         ballot = list.ReturnFrontItem();
-        GovLinkedList.FindCandidate(ballot.GetGovVoteCandidate()).AddVote();
-        SenLinkedList.FindCandidate(ballot.GetSenVoteCandidate()).AddVote();
-        PresLinkedList.FindCandidate(ballot.GetPresVoteCandidate()).AddVote();
+        ballot.VerifyFilledIn();
+        if (ballot.GetFilledIn())
+        {
+            GovLinkedList.FindCandidate(ballot.GetGovVoteCandidate()).AddVote();
+            SenLinkedList.FindCandidate(ballot.GetSenVoteCandidate()).AddVote();
+            PresLinkedList.FindCandidate(ballot.GetPresVoteCandidate()).AddVote();
+        }
 
         list.RemoveFront();
     }
@@ -195,6 +202,7 @@ void Counter::PresidentPrint() {
         list.RemoveFront();
 
     }
+    cout << endl;
 }
 
 //senator print function
@@ -212,6 +220,8 @@ void Counter::SenatorPrint() {
         list.RemoveFront();
 
     }
+    cout << endl;
+
 }
 
 //governor print function
@@ -228,19 +238,25 @@ void Counter::GovernorPrint() {
         list.RemoveFront();
 
     }
+    cout << endl;
 }
 
 
 void Counter::BallotListPrint()
 {
     cout << "Printing All Ballot Information: " << endl;
-    BallotLinkedList list = BallotList.Copy();
+    BallotList.ReturnFrontItem().Print();
+    if (!BallotList.Empty())
+    {
+        BallotLinkedList list = BallotList.Copy();
 
-    while (!list.Empty()) {
+        while (!list.Empty()) {
 
-        list.ReturnFrontItem().Print();
+            list.ReturnFrontItem().Print();
 
-        list.RemoveFront();
+            list.RemoveFront();
 
+        }
+        cout << endl;
     }
 }
