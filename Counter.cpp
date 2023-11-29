@@ -112,48 +112,41 @@ CandidateLinkedList& Counter::GetPresCandidateList() {
 
 void Counter::RemoveDuplicates() 
 {
+    BallotLinkedList temp = *(new BallotLinkedList);
+    BallotLinkedList list1 = BallotList.Copy();
+    while (!list1.Empty()) 
+    {
 
-        BallotLinkedList list = BallotList.Copy();
-        while (!list.Empty()) 
-        {
+        double tempBallID = list1.ReturnFrontItem().GetBallotID();
+        double tempDistID = list1.ReturnFrontItem().GetDistrictID();
+        double tempSenID = list1.ReturnFrontItem().GetSenVoteCandidate();
+        double tempGovID = list1.ReturnFrontItem().GetGovVoteCandidate();
+        double tempPresID = list1.ReturnFrontItem().GetPresVoteCandidate();
+        double tempFilledIn = list1.ReturnFrontItem().GetFilledIn();
 
-            double tempBallID = list.ReturnFrontItem().GetBallotID();
-            double tempDistID = list.ReturnFrontItem().GetDistrictID();
-            double tempSenID = list.ReturnFrontItem().GetSenVoteCandidate();
-            double tempGovID = list.ReturnFrontItem().GetGovVoteCandidate();
-            double tempPresID = list.ReturnFrontItem().GetPresVoteCandidate();
-            double tempFilledIn = list.ReturnFrontItem().GetFilledIn();
-            bool identical = true;
-            bool duplicates = false;
-            list.RemoveFront();
-            Ballot tempBallot = list.FindBallot(tempBallID);
-            if(tempBallot.GetBallotID()!=-1 && tempBallot.GetDistrictID() == tempDistID)
-            {
-                duplicates = true;
-                //if(tempBallot.GetDistrictID()!=tempDistID) {identical=false;}
-                if(tempBallot.GetGovVoteCandidate()!=tempGovID) {identical=false;}
-                if (tempBallot.GetPresVoteCandidate()!=tempPresID) {identical=false;}
-                if (tempBallot.GetSenVoteCandidate()!=tempSenID) {identical=false;}
+        int identical = 0;
+        int duplicates = 0;
+
+        list1.RemoveFront();
+        BallotLinkedList list2 = list1.Copy();
+        if (list2.ReturnFrontItem().BallotID == tempBallID&& list2.ReturnFrontItem().DistrictID == tempDistID) {
+            duplicates++;
+            if(list2.ReturnFrontItem().SenatorVote == tempSenID && list2.ReturnFrontItem().GovernorVote == tempGovID
+                && list2.ReturnFrontItem().PresidentialVote == tempPresID) {
+                identical++;
+            
             }
-            if(identical == false)
-            {
-                while (BallotList.FindBallot(tempBallID).GetBallotID()==tempBallID)
-                {
-                    BallotList.RemoveItem(BallotList.FindBallot(tempBallID));
-                }
-            }
-            if(duplicates && identical)
-            {
-                while (BallotList.FindBallot(tempBallID).GetBallotID()==tempBallID)
-                {
-                        BallotList.RemoveItem(BallotList.FindBallot(tempBallID));
-                }
-                Ballot replace = *(new Ballot(tempBallID, tempDistID, tempGovID, tempSenID, tempPresID, tempFilledIn));
-                BallotList.AddItemToBack(replace);
-            }
+                             
+        }
+        if (identical == duplicates) {
+            temp.AddItemToFront(*(new Ballot(tempBallID, tempDistID, tempGovID, tempSenID, tempPresID, tempFilledIn)));
+        }
+        while (list1.FindBallot(tempBallID).BallotID!=-1) {
+            list1.RemoveItem(list1.FindBallot(tempBallID));
+        }
             
 
-        }
+    }
 
         
     
