@@ -7,7 +7,11 @@ Candidate::Candidate() {
 	LName ="";
 	TotalVotes = 0;
 	BallotList = BallotLinkedList();
+	//DistrictIDs = {0};
 	//^ fills in the values of candidate with blank or null values
+};
+
+Candidate::~Candidate() {
 };
 
 Candidate::Candidate(Candidate& candidate) {
@@ -16,6 +20,7 @@ Candidate::Candidate(Candidate& candidate) {
 	LName = candidate.GetLName();
 	TotalVotes = candidate.GetTotalVotes();
 	BallotList = candidate.GetBallotList();
+	//DistrictIDs = { 0 };
 	//^ copies the values currently stored in the candidate class
 };
 
@@ -25,6 +30,7 @@ Candidate::Candidate(string first, string last, double ID) {
 	LName = last;
 	TotalVotes = 0;
 	BallotList = BallotLinkedList();
+	//DistrictIDs = { 0 };
 	//^ allows manual input of values for Candidate (not manually input through keyboard, instead values are passed when the constructor is called.
 	// see Tabulation.cpp for an example.)
 };
@@ -62,13 +68,13 @@ void Candidate::Print() {
 	cout << "Last Name: " << LName << std::endl;
 	cout << "Total Votes: " << TotalVotes << std::endl;
 	cout << "This Candidate is a part of these districts: ";
-	if (DistrictIDs.size() != 0)
+	/*if (DistrictIDs.size() != 0)
 	{
 		for (int i = 0; i < DistrictIDs.size(); i++)
 		{
 			cout << DistrictIDs[i] << ", ";
 		}
-	}
+	}*/
 	cout << endl;
 	cout << "This candidate holds these ballots: " << endl;
 	BallotLinkedList list = BallotList.Copy();
@@ -116,4 +122,10 @@ BallotLinkedList Candidate::GetBallotList() {
 	return BallotList;
 	//^ returns the list of ballots
 
+}
+
+
+void Candidate::AddVote()
+{
+	TotalVotes++;
 }

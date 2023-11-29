@@ -33,19 +33,19 @@ BallotLinkedList Counter::GetBallotList() {
 }
 
 //gets List of the candidates
-CandidateLinkedList Counter::GetSenCandidateList() {
+CandidateLinkedList& Counter::GetSenCandidateList() {
 
     return SenLinkedList;
 
 }
 
-CandidateLinkedList Counter::GetGovCandidateList() {
+CandidateLinkedList& Counter::GetGovCandidateList() {
 
     return GovLinkedList;
 
 }
 
-CandidateLinkedList Counter::GetPresCandidateList() {
+CandidateLinkedList& Counter::GetPresCandidateList() {
 
     return PresLinkedList;
 
@@ -54,59 +54,60 @@ CandidateLinkedList Counter::GetPresCandidateList() {
 //IMPLEMENTATION METHODS
 
 //finding the ballot for that candidate
-void Counter::FindBallotCandidate() {
-
-        BallotLinkedList list = BallotList.Copy();
-        while (!list.Empty()) 
-        {
-
-            Ballot ballot = BallotList.ReturnFrontItem();
-            Candidate cand = GovLinkedList.FindCandidate(ballot.GetGovVoteCandidate());
-            cand.BallotList.AddItemToFront(ballot);
-            
-
-            cand = SenLinkedList.FindCandidate(ballot.GetSenVoteCandidate());
-            cand.BallotList.AddItemToFront(ballot);
-            
-            cand = PresLinkedList.FindCandidate(ballot.GetPresVoteCandidate());
-            cand.BallotList.AddItemToFront(ballot);
-
-            /*AssignBallotToCandidate(ballot.GetGovVoteCandidate(), ballot, "Gov");
-            AssignBallotToCandidate(ballot.GetSenVoteCandidate(), ballot, "Sen");
-            AssignBallotToCandidate(ballot.GetPresVoteCandidate(), ballot, "Pres");*/
-
-            list.RemoveFront();
-
-        }
-
-}
+////void Counter::FindBallotCandidate() {
+////
+////        BallotLinkedList list = BallotList.Copy();
+////        while (!list.Empty()) 
+////        {
+////
+////            Ballot ballot = BallotList.ReturnFrontItem();
+////            Candidate cand = GovLinkedList.FindCandidate(ballot.GetGovVoteCandidate());
+////            cand.BallotList.AddItemToFront(ballot);
+////            
+////
+////            cand = SenLinkedList.FindCandidate(ballot.GetSenVoteCandidate());
+////            cand.BallotList.AddItemToFront(ballot);
+////            
+////            cand = PresLinkedList.FindCandidate(ballot.GetPresVoteCandidate());
+////            cand.BallotList.AddItemToFront(ballot);
+////
+////            /*AssignBallotToCandidate(ballot.GetGovVoteCandidate(), ballot, "Gov");
+////            AssignBallotToCandidate(ballot.GetSenVoteCandidate(), ballot, "Sen");
+////            AssignBallotToCandidate(ballot.GetPresVoteCandidate(), ballot, "Pres");*/
+////
+////            list.RemoveFront();
+////
+////        }
+////
+////}
 
 //assigning the ballots to the candidate // checks what the candidate type matches, if (ID) match Gov, assign ballot to Gov, etc
-void Counter::AssignBallotToCandidate(double CandidateID, Ballot& ballot, string CandidateType) {
-
-    Candidate candidate;
-    cout << "Assigning Ballot to Candidate" << endl;
-    if (CandidateType == "Gov") {
-
-        candidate = GovLinkedList.FindCandidate(CandidateID);
-        //candidate.Print();
-
-        }
-    else if (CandidateType == "Sen") {
-
-        candidate = SenLinkedList.FindCandidate(CandidateID);
-
-    }
-
-    else if (CandidateType == "Pres") {
-
-        candidate = PresLinkedList.FindCandidate(CandidateID);
-
-    }
-    candidate.Print();
-    candidate.BallotList.AddItemToFront(ballot); //This might need to be ballot* or ballot&
-            
-}
+//void Counter::AssignBallotToCandidate(double CandidateID, Ballot& ballot, string CandidateType) {
+//
+//    Candidate candidate;
+//    cout << "Assigning Ballot to Candidate" << endl;
+//    if (CandidateType == "Gov") {
+//
+//
+//        GovLinkedList.FindCandidate(CandidateID).AddVote();
+//        //candidate.Print();
+//
+//        }
+//    else if (CandidateType == "Sen") {
+//
+//        candidate = SenLinkedList.FindCandidate(CandidateID);
+//
+//    }
+//
+//    else if (CandidateType == "Pres") {
+//
+//        candidate = PresLinkedList.FindCandidate(CandidateID);
+//
+//    }
+//    candidate.Print();
+//    candidate.BallotList.AddItemToFront(ballot); //This might need to be ballot* or ballot&
+//            
+//}
 
 
 void Counter::RemoveDuplicates() 
@@ -161,42 +162,23 @@ void Counter::RemoveDuplicates()
 
 void Counter::CountAllVotes()
 {
-    CandidateLinkedList list = SenLinkedList.Copy();
+    //ballot object
+    //check sen vote ID
+    //Find a candidate with that ID
+    //Add vote to that candidate
 
-    while (!list.Empty()) 
-    {
+    BallotLinkedList list = BallotList.Copy();
+    Ballot ballot;
 
-        list.ReturnFrontItem().CountVotes();
+    while (!list.Empty()) {
 
-
-        list.RemoveFront();
-
-    }
-    list  = GovLinkedList.Copy();
-
-    while (!list.Empty()) 
-    {
-
-        list.ReturnFrontItem().CountVotes();
-
+        ballot = list.ReturnFrontItem();
+        GovLinkedList.FindCandidate(ballot.GetGovVoteCandidate()).AddVote();
+        SenLinkedList.FindCandidate(ballot.GetSenVoteCandidate()).AddVote();
+        PresLinkedList.FindCandidate(ballot.GetPresVoteCandidate()).AddVote();
 
         list.RemoveFront();
-
     }
-    list = PresLinkedList.Copy();
-
-    while (!list.Empty()) 
-    {
-
-        list.ReturnFrontItem().CountVotes();
-
-
-        list.RemoveFront();
-
-    }
-
-
-
 
 }
 

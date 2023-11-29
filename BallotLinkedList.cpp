@@ -27,6 +27,7 @@ void BallotLinkedList::RemoveFront()
 		head = temp->next;
 		delete temp;
 	}
+
 }
 
 void BallotLinkedList::AddItemToFront(Ballot& ballot)

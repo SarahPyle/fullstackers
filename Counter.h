@@ -24,9 +24,9 @@ public:
 	BallotLinkedList GetBallotList();
 
 	//List of each candidate type in the election
-	CandidateLinkedList GetSenCandidateList();
-	CandidateLinkedList GetGovCandidateList();
-	CandidateLinkedList GetPresCandidateList();
+	CandidateLinkedList& GetSenCandidateList();
+	CandidateLinkedList& GetGovCandidateList();
+	CandidateLinkedList& GetPresCandidateList();
 
 	
 
@@ -37,6 +37,7 @@ public:
 	//assign that voted ballot to the candidate once candidate is found
 	void AssignBallotToCandidate(double CandidateID, Ballot& ballot, string CandidateType);
 
+	//Goes through the list of ballots and adds a vote to a found candidate from the ballot votes
 	void CountAllVotes();
 
 	//overall print function / prints candidate information and their votes

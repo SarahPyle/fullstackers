@@ -126,9 +126,11 @@ CandidateLinkedList CandidateLinkedList::Copy()
 	while (temp != NULL)
 	{
 		list.AddItemToFront(temp->candidate);
+		//list.ReturnFrontItem().BallotList = temp->candidate.BallotList.Copy();
 		temp = temp->next;
 	}
 	return list;
+
 }
 
 
