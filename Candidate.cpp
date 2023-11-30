@@ -79,29 +79,9 @@ void Candidate::Print() {
 
 
 
-void Candidate::CountVotes() {
-	double i = 0; //creates a local variable to keep track of the total votes counted in this method
-	BallotLinkedList list = BallotList.Copy(); //copies the list of ballots so the original being used isn't changed, and stores it in a local variable
-	while(!list.Empty()) { //loops through the copied list one at a time until its empty
-		list.RemoveFront(); //removes the front item in the list, this is why we didn't just edit the original list.
-		i++; //increments our local total by 1
-	}
-	TotalVotes = i; //sets the value of TotalVotes to the value stored in our local variable, which should be accurate to the total number of votes
-	
-};
 
-void Candidate::AddBallot(Ballot &ballot) 
-{
-	//ballot.Print();
-	BallotList.AddItemToFront(ballot);
-	//^ adds a new ballot to the front of the list, using the values stored in the ballot parameter passed to the method
-};
 
-void Candidate::RemoveBallot(Ballot &ballot) {
-	BallotList.RemoveItem(ballot);
-	//^ removes the ballot stored in the list if its values correlate to the values passed in the ballot parameter
-	//may want to include an exception/catch algorithm that will display an error when the ballot passed does not exist in the list
-};
+
 
 BallotLinkedList Candidate::GetBallotList() {
 	return BallotList;
