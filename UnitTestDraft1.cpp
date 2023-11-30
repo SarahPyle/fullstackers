@@ -52,17 +52,12 @@ namespace UnitTestDraft1
 			counter.BallotList.AddItemToFront(*(new Ballot(1.0, 1.0, 5.0, 2.0, -1, true)));
 			counter.BallotList.AddItemToFront(*(new Ballot(2.0, 1.0, 5.0, 2.0, -1, true)));
 
-
 			counter.CountAllVotes();
 			double totalVotesExpected = 0;
-
 
 			Assert::AreEqual(totalVotesExpected, counter.GetGovCandidateList().FindCandidate(5.0).GetTotalVotes());
 			Assert::AreEqual(totalVotesExpected, counter.GetSenCandidateList().FindCandidate(2.0).GetTotalVotes());
 			Assert::AreEqual(totalVotesExpected, counter.GetPresCandidateList().FindCandidate(9.0).GetTotalVotes());
-
-
-
 		}
 		TEST_METHOD(TestMethodCounterAddingVoteCase1) {
 
@@ -225,16 +220,24 @@ namespace UnitTestDraft1
 
 		TEST_METHOD(TestMethodVerifyFilledIn) {
 			//This tests the VerifyFilledIn function from the Ballot class.
-			
 			Ballot ballotActual1 = *(new Ballot(-1, -1, -1, -1, -1, true));
 			Ballot ballotActual2 = *(new Ballot(2, 2, -1, 2, -1, true));
 			Ballot ballotActual3 = *(new Ballot(-1, 3, 2, 1, 1, true));
 			Ballot ballotActual4 = *(new Ballot(4, -1, -1, 2, -1, true));
 			Ballot ballotActual5 = *(new Ballot(5, 1, 1, 2, 1, true));
+			ballotActual1.VerifyFilledIn();
+			ballotActual2.VerifyFilledIn();
+			ballotActual3.VerifyFilledIn();
 			ballotActual4.VerifyFilledIn();
 			ballotActual5.VerifyFilledIn();
+			bool expected1 = false;
+			bool expected2 = false;
+			bool expected3 = false;
 			bool expected4 = false;
 			bool expected5 = true;
+			Assert::AreEqual(expected1, ballotActual1.GetFilledIn());
+			Assert::AreEqual(expected2, ballotActual2.GetFilledIn());
+			Assert::AreEqual(expected3, ballotActual3.GetFilledIn());
 			Assert::AreEqual(expected4, ballotActual4.GetFilledIn());
 			Assert::AreEqual(expected5, ballotActual5.GetFilledIn());
 			
