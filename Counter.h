@@ -30,13 +30,6 @@ public:
 
 	
 
-	//method to find the candidate on the ballot
-	void FindBallotCandidate();
-	void RemoveDuplicates();
-
-	//assign that voted ballot to the candidate once candidate is found
-	void AssignBallotToCandidate(double CandidateID, Ballot& ballot, string CandidateType);
-
 	//Goes through the list of ballots and adds a vote to a found candidate from the ballot votes
 	void CountAllVotes();
 
