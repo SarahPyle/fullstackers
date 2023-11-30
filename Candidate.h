@@ -23,11 +23,9 @@ public:
 		bool IDsEqual(Candidate candidate); //checks to make sure the candidate being input has the same ID
 		void Print(); //displays the first name, last name, and ID of a candidate
 		//void CheckForDuplicates(BallotLinkedList BallotList); //checks for duplicate ballots
-		void CountVotes(); //counts the total number of votes collected
 		
-		void AddBallot(Ballot& ballot); //adds a ballot to the front of the list of ballots
-		void RemoveBallot(Ballot& ballot); //removes a ballot from the front of the list of ballots
-		//bool ValidateDistrict(double candidateID, double districtID); //This will validate if the Candidate on the ballot should be on that district ballot
+		
+		
 
 		void AddVote();
 
@@ -37,6 +35,6 @@ public:
 		double CandidateID=0; //stores the ID of a candidate
 		double TotalVotes=0; //stores the total number of votes collected
 		BallotLinkedList BallotList = *(new BallotLinkedList()); //stores the list of ballots
-		//vector<double> DistrictIDs = {0}; //This will hold the District ID's that candidates are a part of
+		
 
 };
