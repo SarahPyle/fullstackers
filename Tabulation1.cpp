@@ -22,7 +22,7 @@ string Version = "0.1";
 
 int main()
 {
-	Counter counter = Counter();
+	Counter counter = *(new Counter());
 	 
 
 
@@ -37,10 +37,10 @@ int main()
 	counter.GovLinkedList.AddItemToFront(*(new Candidate("Chad", "Murna", double(7))));
 	counter.GovLinkedList.AddItemToFront(*(new Candidate("Sebastian", "Loxley", double(8))));
 
-	counter.PresLinkedList.AddItemToFront(*(new Candidate("Matthew", "Harley", double(9))));
+	counter.PresLinkedList.AddItemToFront(*(new Candidate("Peter", "Griffin", double(9))));
 	counter.PresLinkedList.AddItemToFront(*(new Candidate("Chandler", "Colombus", double(10))));
 
-	counter.BallotList.AddItemToFront(*(new Ballot(1.0, 1.0, 5.0, 2.0, -1, true)));
+	counter.BallotList.AddItemToFront(*(new Ballot(1.0, 1.0, 5.0, 2.0, 9.0, true)));
 	counter.BallotList.AddItemToFront(*(new Ballot(2.0, 1.0, 5.0, 2.0, 9.0, true)));
 	counter.BallotList.AddItemToFront(*(new Ballot(3.0, 1.0, 6.0, 3.0, 9.0, true)));
 	counter.BallotList.AddItemToFront(*(new Ballot(4.0, 1.0, 6.0, 3.0, 9.0, true)));
@@ -65,7 +65,7 @@ int main()
 	counter.GovernorPrint();
 	counter.SenatorPrint();
 	counter.PresidentPrint();
-	system("pause");
+	//system("pause");
 	
 }
 

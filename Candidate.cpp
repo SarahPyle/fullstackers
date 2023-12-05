@@ -81,8 +81,6 @@ void Candidate::Print() {
 
 
 
-
-
 BallotLinkedList Candidate::GetBallotList() {
 	return BallotList;
 	//^ returns the list of ballots

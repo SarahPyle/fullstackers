@@ -23,18 +23,18 @@ public:
 		bool IDsEqual(Candidate candidate); //checks to make sure the candidate being input has the same ID
 		void Print(); //displays the first name, last name, and ID of a candidate
 		//void CheckForDuplicates(BallotLinkedList BallotList); //checks for duplicate ballots
-		
+	
 		
 		
 
 		void AddVote();
 
 
-		string FName=""; //stores the first name of a candidate
-		string LName=""; //stores the last name of a candidate
-		double CandidateID=0; //stores the ID of a candidate
-		double TotalVotes=0; //stores the total number of votes collected
-		BallotLinkedList BallotList = *(new BallotLinkedList()); //stores the list of ballots
+		string FName; //stores the first name of a candidate
+		string LName; //stores the last name of a candidate
+		double CandidateID; //stores the ID of a candidate
+		double TotalVotes; //stores the total number of votes collected
+		BallotLinkedList BallotList; //stores the list of ballots
 		
 
 };
